@@ -1,6 +1,6 @@
 package main;
 
-public class Money implements main.Expression{
+public class Money implements Expression{
     protected int amount;
     protected String currency;
 
@@ -31,7 +31,14 @@ public class Money implements main.Expression{
         return currency;
     }
 
-    public main.Expression plus(Money addend) {
-        return new Money(this.amount + addend.amount, this.currency);
+    public Expression plus(Money addend) {
+        return new Sum(this, addend);
+    }
+
+    public Money reduce(Bank bank, String to){
+        int rate = (currency.equals("CHF") && to.equals("USD"))
+                ? 2
+                : 1;
+        return new Money(amount / rate, to);
     }
 }
