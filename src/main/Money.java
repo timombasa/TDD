@@ -1,6 +1,6 @@
 package main;
 
-public class Money {
+public class Money implements main.Expression{
     protected int amount;
     protected String currency;
 
@@ -23,15 +23,15 @@ public class Money {
         return new Money(amount, "CHF");
     }
 
-//    public Money times(int multiplier) {
-//        return new Money(amount * multiplier);
-//    }
-
     public Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
     public String currency(){
         return currency;
+    }
+
+    public main.Expression plus(Money addend) {
+        return new Money(this.amount + addend.amount, this.currency);
     }
 }
