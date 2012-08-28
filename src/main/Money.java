@@ -9,10 +9,11 @@ public class Money implements Expression{
         this.currency = currency;
     }
 
+    @SuppressWarnings("")
     public boolean equals(Object object) {
         Money money = (Money) object;
         return this.amount == money.amount
-                && this.currency == money.currency;
+                && this.currency.equals(money.currency);
     }
 
     public static Money dollar(int amount) {
@@ -23,7 +24,7 @@ public class Money implements Expression{
         return new Money(amount, "CHF");
     }
 
-    public Money times(int multiplier) {
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
@@ -31,7 +32,7 @@ public class Money implements Expression{
         return currency;
     }
 
-    public Expression plus(Money addend) {
+    public Expression plus(Expression addend) {
         return new Sum(this, addend);
     }
 
