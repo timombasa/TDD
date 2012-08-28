@@ -10,17 +10,12 @@ public class Bank {
         return source.reduce(this, to);
     }
 
-    public int rate(String from, String to) {
-        return (from.equals("CHF") && to.equals("USD"))
-                ? 2
-                : 1;
-    }
-
     public void setRate(String from, String to, int rate) {
         rates.put(new Pair(from, to), new Integer(rate));
     }
 
     public int getRate(String from, String to){
+        if (from.equals(to)) return 1;
         Integer rate = (Integer) rates.get(new Pair(from, to));
         return rate.intValue();
     }

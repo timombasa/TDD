@@ -1,6 +1,6 @@
 package main;
 
-public class Money implements Expression{
+public class Money extends Expression{
     protected int amount;
     protected String currency;
 
@@ -9,7 +9,6 @@ public class Money implements Expression{
         this.currency = currency;
     }
 
-    @SuppressWarnings("")
     public boolean equals(Object object) {
         Money money = (Money) object;
         return this.amount == money.amount
@@ -30,10 +29,6 @@ public class Money implements Expression{
 
     public String currency(){
         return currency;
-    }
-
-    public Expression plus(Expression addend) {
-        return new Sum(this, addend);
     }
 
     public Money reduce(Bank bank, String to){

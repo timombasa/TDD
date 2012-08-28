@@ -41,6 +41,12 @@ public class BankTest {
     }
 
     @Test
+    public void testIdentityRate() {
+        assertEquals(1, new Bank().getRate("USD", "USD"));
+    }
+
+
+    @Test
     public void testSumTimes() {
         Expression fiveBucks = Money.dollar(5);
         Expression tenFrancs = Money.franc(10);
