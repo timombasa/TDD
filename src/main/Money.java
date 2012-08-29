@@ -9,6 +9,7 @@ public class Money extends Expression{
         this.currency = currency;
     }
 
+    @SuppressWarnings("'equals()' should check the class of its parameter")
     public boolean equals(Object object) {
         Money money = (Money) object;
         return this.amount == money.amount
@@ -31,6 +32,7 @@ public class Money extends Expression{
         return currency;
     }
 
+    //TODO - there has to be a better way to make this less ugly
     public Money reduce(Bank bank, String to){
         int rate = (currency.equals("CHF") && to.equals("USD"))
                 ? 2

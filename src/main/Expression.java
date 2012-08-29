@@ -2,8 +2,8 @@ package main;
 
 public abstract class Expression {
 
-    protected Expression augend;
-    protected Expression addend;
+    public Expression augend;
+    public Expression addend;
 
     public Expression(){
         this.augend = null;

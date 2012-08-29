@@ -19,7 +19,7 @@ public class BankTest {
     }
 
     @Test
-    public void testReduceMoneyDifferentCurrency(){
+    public void testReduceMoneyDifferentCurrency() {
         Bank bank = new Bank();
         bank.setRate("CHF", "USD", 2);
 
@@ -29,7 +29,7 @@ public class BankTest {
     }
 
     @Test
-    public void testMixedCurrencyAddition(){
+    public void testMixedCurrencyAddition() {
         Expression fiveBucks = Money.dollar(5);
         Expression tenFrancs = Money.franc(10);
         Bank bank = new Bank();
@@ -45,7 +45,6 @@ public class BankTest {
         assertEquals(1, new Bank().getRate("USD", "USD"));
     }
 
-
     @Test
     public void testSumTimes() {
         Expression fiveBucks = Money.dollar(5);
@@ -55,6 +54,7 @@ public class BankTest {
 
         Expression sum = new Sum(fiveBucks, tenFrancs).times(2);
         Money result = bank.reduce(sum, "USD");
+
         assertEquals(Money.dollar(20),result);
     }
 
